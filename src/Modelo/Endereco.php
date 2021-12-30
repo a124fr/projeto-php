@@ -37,4 +37,9 @@ class Endereco
     {
         return $this->numero;
     }
+    
+    public function __tostring(): string
+    {
+        return "{$this->rua}, {$this->numero}, {$this->bairro}, {$this->cidade}";
+    }
 }
