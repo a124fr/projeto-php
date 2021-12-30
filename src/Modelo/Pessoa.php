@@ -4,12 +4,14 @@ namespace Alura\Banco\Modelo;
 
 abstract class Pessoa
 {
+    use AcessoPropriedades;
+    
     protected CPF $cpf;
     private string $nome;
     
     public function __construct(string $nome, CPF $cpf)
     {
-        $this->validarNomeTitular($nome);
+        $this->validarNome($nome);
         $this->nome = $nome;
         $this->cpf = $cpf;
     }
@@ -24,7 +26,8 @@ abstract class Pessoa
         return $this->cpf->getNumero();
     }
     
-    protected function validarNomeTitular(string $nome): void
+    // final -> não permite a sobrescrita do método nas classe filhas.
+    protected final function validarNome(string $nome): void
     {
         if (strlen($nome) < 5)
         {

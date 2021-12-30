@@ -9,6 +9,6 @@ $outroEndereco = new Endereco("Rio", "Centro", "um rua aí", "50");
 
 //echo $umEndereco.PHP_EOL;
 // echo $outroEndereco;
-$umEndereco->numero = "33C1";
+//$umEndereco->numero = "33C1";
 
 echo $umEndereco->numero;
