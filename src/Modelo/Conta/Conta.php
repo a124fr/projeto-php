@@ -2,10 +2,10 @@
 
 namespace Alura\Banco\Modelo\Conta;
 
-class Conta 
+abstract class Conta 
 {
     private Titular $titular;
-    private float $saldo;   
+    protected float $saldo;   
     private static int $numeroDeContas = 0;
 
     public function __construct(Titular $titular) 
@@ -34,6 +34,9 @@ class Conta
         
     public function sacar(float $valorASacar): void 
     {
+        $tarifaSaque = $valorASacar * $this->percentualtarifa();
+        $valorASacar += $tarifaSaque;
+        
         if ($valorASacar > $this->saldo) {
             echo "Saldo indisponível";
             return;
@@ -68,4 +71,7 @@ class Conta
         // return static::$numeroDeContas; -> outra forma de chamar membros estáticos... obs: pesquisar.
         return self::$numeroDeContas;
     }
+
+    protected abstract function percentualTarifa(): float;
+
 }
