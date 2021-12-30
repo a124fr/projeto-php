@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * class Endereco
+ * @package Alura\Banco\Modelo
+ * @property-read string $cidade
+ * @property-read string $bairro
+ * @property-read string $rua
+ * @property-read string $numero
+ */
+
 namespace Alura\Banco\Modelo;
 
 class Endereco 
@@ -38,8 +47,28 @@ class Endereco
         return $this->numero;
     }
     
+    public function setNumero(string $numero): void
+    {
+        $this->numero = $numero;
+    }
+    
     public function __tostring(): string
     {
         return "{$this->rua}, {$this->numero}, {$this->bairro}, {$this->cidade}";
+    }
+    
+    public function __get(string $nomeAtributo) 
+    {
+        $metodo = 'get'.ucfirst($nomeAtributo);        
+        return $this->$metodo();
+    }
+    
+    public function __set($nomeAtributo, $valor)
+    {
+        $metodo = 'set'.ucfirst($nomeAtributo); 
+        
+        if (method_exists($this, $metodo)) {
+            $this->$metodo($valor);
+        }
     }
 }
