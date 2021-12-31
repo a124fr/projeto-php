@@ -31,7 +31,7 @@ abstract class Pessoa
     {
         if (strlen($nome) < 5)
         {
-            echo "Nome precisa ter pelo menos 5 caracteres";
+           throw new \InvalidArgumentException("Nome precisa ter pelo menos 5 caracteres");
             exit();
         }
     }
