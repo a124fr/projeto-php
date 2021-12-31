@@ -3,12 +3,11 @@
 require_once 'autoload.php';
 
 use Alura\Banco\Modelo\CPF;
-use Alura\Banco\Modelo\Funcionario\Funcionario;
-use Alura\Banco\Servico\ControladorBonificacao;
-use Alura\Banco\Modelo\Funcionario\Gerente;
-use Alura\Banco\Modelo\Funcionario\Diretor;
 use Alura\Banco\Modelo\Funcionario\Desenvolvedor;
+use Alura\Banco\Modelo\Funcionario\Diretor;
 use Alura\Banco\Modelo\Funcionario\EditorVideo;
+use Alura\Banco\Modelo\Funcionario\Gerente;
+use Alura\Banco\Servico\ControladorBonificacao;
 
 $umFuncionario = new Desenvolvedor("Vinicius Mago", new CPF("123.456.789-10"), 1000);
 
@@ -27,4 +26,10 @@ $controlador->adicionaBonificacao($doisFuncionario);
 $controlador->adicionaBonificacao($umDiretor);
 $controlador->adicionaBonificacao($umEditor);
 
-echo "Total de bonificação paga é: R\${$controlador->getTotal()}";
+// echo "Total de bonificação paga é: R\${$controlador->getTotal()}";
+
+
+
+
+
+

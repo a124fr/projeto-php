@@ -54,7 +54,7 @@ abstract class Conta
         
         $this->saldo += $valorADepositar;
     }
-    
+    /*
     public function transferir($valorATransferir, Conta $contaDestino): void 
     {
         if ($valorATransferir > $this->saldo) {
@@ -64,7 +64,7 @@ abstract class Conta
         
         $this->sacar($valorATransferir);
         $contaDestino->depositar($valorATransferir);
-    }
+    }*/
     
     public static function getNumeroDeContas(): int
     {

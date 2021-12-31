@@ -12,19 +12,20 @@ use Alura\Banco\Modelo\CPF;
 use Alura\Banco\Modelo\Endereco;
 use Alura\Banco\Modelo\Conta\Conta;
 use Alura\Banco\Modelo\Conta\Titular;
+use Alura\Banco\Modelo\Conta\ContaCorrente;
 
 $endereco = new Endereco("Petrópolis", "um bairro qualquer", "minha rua", "71B");
 
 $titularVinicius = new Titular(new CPF("001.002.003-11"), "Vinicius Dias", $endereco);
-$primeiraConta = new Conta($titularVinicius);
+$primeiraConta = new ContaCorrente($titularVinicius);
 $primeiraConta->depositar(1000);
 $primeiraConta->sacar(300);
 
 // echo $primeiraConta->getSaldo();
 // ar_dump($primeiraConta);
 
-$segundaConta = new Conta(new Titular(new CPF("698.549.549-10"), "Ana Carla", $endereco));
-$terceiraConta = new Conta(new Titular(new CPF("598.449.509-21"), "Ana Carolina", new Endereco("São Miguel", "jardim", "beija flor", "57D")));
+$segundaConta = new ContaCorrente(new Titular(new CPF("698.549.549-10"), "Ana Carla", $endereco));
+$terceiraConta = new ContaCorrente(new Titular(new CPF("598.449.509-21"), "Ana Carolina", new Endereco("São Miguel", "jardim", "beija flor", "57D")));
 
 echo "Titular da 3° Conta é: ".$terceiraConta->getTitular()->getNome().PHP_EOL;
 
