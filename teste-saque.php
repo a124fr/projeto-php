@@ -8,7 +8,7 @@ use Alura\Banco\Modelo\CPF;
 use Alura\Banco\Modelo\Endereco;
 
 $conta = new ContaCorrente(
-    new Titular(new CPF("123.456.789-10"), 
+    new Titular(new CPF("12R3.456.789-10"), 
         "Vinicius Dias", 
         new Endereco("Petrópolis", "Teste", "Rual lá", "37")
     )    
@@ -17,6 +17,12 @@ $conta = new ContaCorrente(
 $conta->depositar(500);
 echo "Saldo Atual é: R\${$conta->getSaldo()}".PHP_EOL;
 
-$conta->sacar(100);
+try {
+    $conta->sacar(600);
+    echo "Saldo após saque de R$100 reais é: R\${$conta->getSaldo()}".PHP_EOL;
+} catch(\Alura\Banco\Modelo\Conta\SaldoInsuficienteException $e) {
+    echo $e->getMessage();    
+}
 
-echo "Saldo após saque de R$100 reais é: R\${$conta->getSaldo()}".PHP_EOL;
+echo PHP_EOL;
+echo "Saldo Atual é: R\${$conta->getSaldo()}".PHP_EOL;
